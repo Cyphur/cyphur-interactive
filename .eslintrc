@@ -1,0 +1,52 @@
+{
+    "extends": ["eslint:recommended", "prettier"],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2018
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "ecmaFeatures": {
+        "modules": true,
+        "spread": true,
+        "restParams": true
+    },
+    "rules": {
+        "no-var": 1,
+        "no-console": "off",
+        "no-unused-vars": 1,
+        "no-undef": 2,
+        "no-extra-parens": 1,
+        "class-methods-use-this": 1,
+        "no-use-before-define": 2,
+        "arrow-spacing": 1,
+        "no-useless-constructor": 2,
+        "rest-spread-spacing": ["error", "never"],
+        "prefer-const": 1,
+        "object-curly-spacing": ["error", "always"],
+        "no-whitespace-before-property": "error",
+        "indent": ["error", 4],
+        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+        "block-spacing": ["error", "always"],
+        "array-bracket-spacing": ["error", "always"],
+        "key-spacing": [
+            "error",
+            { "mode": "strict", "afterColon": true, "beforeColon": false }
+        ],
+        "quotes": [
+            "error",
+            "single",
+            { "allowTemplateLiterals": true, "avoidEscape": true }
+        ],
+        "space-before-function-paren": [
+            "error",
+            { "anonymous": "never", "named": "never", "asyncArrow": "always" }
+        ],
+        "space-before-blocks": ["error", "always"],
+        "padded-blocks": ["error", "never"],
+        "implicit-arrow-linebreak": ["error", "beside"]
+    }
+}

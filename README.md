@@ -1,2 +1,3 @@
-# cyphur-interactive
-Data visualization application 
+# Cyphur Interactive
+
+Data visualization application
