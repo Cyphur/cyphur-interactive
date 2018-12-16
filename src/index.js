@@ -77,4 +77,16 @@ const config = {
     ...DEFAULT_TIMESERIES_OPTIONS
 };
 
-bb.generate(config);
+const chart = bb.generate(config);
+
+document
+    .getElementsByClassName('cy-trends__legend-toggle')[0]
+    .addEventListener('click', () => {
+        legendContainer.classList.contains('collapsed')
+            ? legendContainer.classList.remove('collapsed')
+            : legendContainer.classList.add('collapsed');
+
+        window.setTimeout(() => {
+            chart.flush(true);
+        }, 100);
+    });

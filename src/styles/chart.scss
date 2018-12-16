@@ -57,12 +57,12 @@
         height: 100%;
         width: 100%;
         min-width: 300px;
+        overflow: hidden;
     }
 
     &__legend-wrapper {
         border-left: 1px solid #e7e7e7;
         position: relative;
-        width: 350px;
         display: flex;
     }
 
@@ -75,7 +75,21 @@
 }
 
 .cy-legend {
+    position: relative;
+    overflow: hidden;
     padding: 1em;
+    width: 330px;
+    transition: width 0.1s;
+
+    &.collapsed {
+        padding: 0;
+        width: 0;
+
+        > * {
+            display: none;
+        }
+    }
+
     &__item {
         padding: 0.5em;
     }
