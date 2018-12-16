@@ -20,13 +20,13 @@
     &__config {
         border-right: 1px solid #e7e7e7;
         position: relative;
-        width: 300px;
     }
 
     &__config-menu {
         margin: 0;
         padding: 0;
         list-style: none;
+        width: 250px;
 
         h3 {
             margin: 0;
@@ -71,6 +71,7 @@
         width: 17px;
         border-right: 1px solid #e7e7e7;
         background: #f9f9f9;
+        cursor: pointer;
     }
 }
 
@@ -78,7 +79,7 @@
     position: relative;
     overflow: hidden;
     padding: 1em;
-    width: 330px;
+    width: 300px;
     transition: width 0.1s;
 
     &.collapsed {
