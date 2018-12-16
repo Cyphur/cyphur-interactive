@@ -27,6 +27,7 @@
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.4",
         "clean-webpack-plugin": "^1.0.0",
+        "copy-webpack-plugin": "^4.6.0",
         "css-loader": "^2.0.1",
         "cssnano": "^4.1.7",
         "eslint": "^5.10.0",
@@ -52,6 +53,10 @@
         "webpackbar": "^3.1.4"
     },
     "dependencies": {
-        "lodash": "^4.17.11"
+        "billboard.js": "1.6.2",
+        "lodash": "^4.17.11",
+        "moment": "^2.23.0",
+        "moment-timezone": "^0.5.23",
+        "normalize.css": "^8.0.1"
     }
 }

@@ -1,27 +1,37 @@
-* {
-    box-sizing: border-box;
-}
+@import 'normalize.css/normalize.css';
+@import 'billboard.js/dist/billboard.min.css';
 
 body {
     position: absolute;
     height: 100%;
     width: 100%;
+    font-family: Helvetica, sans-serif;
+    overflow-y: auto;
     margin: 0;
 }
 
-.header {
+* {
+    box-sizing: border-box;
+}
+
+.cy-header {
     display: flex;
     height: 60px;
     align-items: center;
     padding: 0 1em;
-    border-bottom: 1px solid #e1e1e1;
-}
+    border-bottom: 1px solid #e7e7e7;
 
-.logo {
-    width: 200px;
-    height: 60%;
-}
+    &__logo {
+        width: 200px;
+        height: 60%;
 
-img {
-    height: 100%;
+        img {
+            height: 100%;
+        }
+    }
+}
+.cy-page {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 60px);
 }

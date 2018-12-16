@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -15,7 +16,7 @@ const optimization = {
         cacheGroups: {
             utils: {
                 chunks: 'all',
-                test: /[\\/]node_modules[\\/](lodash)[\\/]/,
+                test: /[\\/]node_modules[\\/](lodash|moment|moment-timezone)[\\/]/,
                 name: 'vendor/utils'
             }
         }
@@ -54,7 +55,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
                     'sass-loader'
@@ -70,6 +71,7 @@ module.exports = {
     plugins: [
         // new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin([ 'dist' ]),
+        new CopyWebpackPlugin([ { from: 'src/img', to: 'img' } ]),
         new webpack.NamedModulesPlugin(),
         new WebpackBarPlugin(),
         new WebpackStylishPlugin(),
@@ -77,6 +79,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Cyphur Interactive',
             favicon: 'favicon.ico',
+            template: 'src/index.html',
             filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
