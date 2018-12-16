@@ -7,7 +7,7 @@ const WebpackStylishPlugin = require('webpack-stylish');
 const WebpackBarPlugin = require('webpackbar');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = true;
 
 const optimization = {
     runtimeChunk: true,
@@ -86,6 +86,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port: 9000,
+        open: 'Chrome'
     }
 };
