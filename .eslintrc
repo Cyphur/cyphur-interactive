@@ -21,7 +21,6 @@
         "no-undef": 2,
         "no-extra-parens": 1,
         "class-methods-use-this": 1,
-        "no-use-before-define": 2,
         "arrow-spacing": 1,
         "no-useless-constructor": 2,
         "rest-spread-spacing": ["error", "never"],
