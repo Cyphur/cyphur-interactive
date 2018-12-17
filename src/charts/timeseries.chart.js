@@ -63,7 +63,7 @@ const getStockTimeseriesQuery = (
     interval,
     type = interval ? 'TIME_SERIES_INTRADAILY' : 'TIME_SERIES_DAILY'
 ) => {
-    const BASE_URL = `https://www.alphavantage.co/query?function=${type}&symbol=${symbol}&outputsize=full&apikey=5J7U65DB47FTSF47`;
+    const BASE_URL = `https://www.alphavantage.co/query?function=${type}&symbol=${symbol}&outputsize=full&apikey=apidemo`;
     return interval ? `${BASE_URL}&interval=${interval}` : BASE_URL;
 };
 
@@ -91,12 +91,22 @@ export const generateTimeseries = (chartElement, config) => {
 };
 
 function convertToColumns(data) {
+    const NUM_POINTS_TO_SHOW = 288;
     const [ metadata, timeseries ] = Object.values(data);
-
-    const timeseriesValues = Object.values(timeseries);
+    const datetimes = Object.keys(timeseries);
+    const timeseriesValues = Object.values(timeseries).splice(
+        datetimes.length - NUM_POINTS_TO_SHOW,
+        datetimes.length
+    );
     const timeseriesLabels = Object.keys(timeseriesValues[0]);
 
-    const datetimes = [ 'x', ...Object.keys(timeseries) ];
+    const datetimeColumn = [
+        'x',
+        ...Object.keys(timeseries).splice(
+            datetimes.length - NUM_POINTS_TO_SHOW,
+            datetimes.length
+        )
+    ];
 
     const dataColumns = [];
 
@@ -106,7 +116,7 @@ function convertToColumns(data) {
         dataColumns.push([ label, ...data ]);
     });
 
-    const columns = [ datetimes, ...dataColumns ];
+    const columns = [ datetimeColumn, ...dataColumns ];
 
     return columns;
 }
