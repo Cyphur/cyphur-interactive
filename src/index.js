@@ -26,6 +26,11 @@ const trendConfig = {
 };
 
 generateTimeseries(chartContainer, trendConfig).then(chart => {
+    window.addEventListener('resize', () => {
+        console.log('chart resizing');
+        chart.flush(true);
+    });
+
     document
         .getElementsByClassName('cy-trends__legend-toggle')[0]
         .addEventListener('click', () => {
@@ -33,8 +38,6 @@ generateTimeseries(chartContainer, trendConfig).then(chart => {
                 ? legendContainer.classList.remove('collapsed')
                 : legendContainer.classList.add('collapsed');
 
-            window.setTimeout(() => {
-                chart.resize({ width: chartContainer.offsetWidth });
-            }, 100);
+            chart.resize({ width: chartContainer.offsetWidth });
         });
 });
