@@ -27,8 +27,10 @@ const trendConfig = {
 
 generateTimeseries(chartContainer, trendConfig).then(chart => {
     window.addEventListener('resize', () => {
-        console.log('chart resizing');
-        chart.flush(true);
+        chart.resize({
+            height: chartContainer.offsetHeight,
+            width: chartContainer.offsetWidth
+        });
     });
 
     document
