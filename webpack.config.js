@@ -6,7 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackStylishPlugin = require('webpack-stylish');
 const WebpackBarPlugin = require('webpackbar');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+//     .BundleAnalyzerPlugin;
 
 const devMode = true;
 
@@ -14,10 +15,10 @@ const optimization = {
     runtimeChunk: true,
     splitChunks: {
         cacheGroups: {
-            utils: {
+            vendors: {
                 chunks: 'all',
-                test: /[\\/]node_modules[\\/](lodash|moment|moment-timezone)[\\/]/,
-                name: 'vendor/utils'
+                test: /node_modules/,
+                name: 'vendor'
             }
         }
     }

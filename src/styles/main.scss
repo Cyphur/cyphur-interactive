@@ -31,7 +31,12 @@ body {
     }
 }
 .cy-page {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: calc(100% - 60px);
+
+    &--tiles {
+        padding: 1em;
+        background: #f7f7f7;
+    }
 }
