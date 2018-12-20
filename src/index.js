@@ -13,8 +13,8 @@ const LEGEND_TEMPLATE =
     "<li class='cy-legend__item' style='color:{=COLOR}'>{=TITLE}</li>";
 
 const trendsContainer = document.getElementsByClassName(TRENDS_CLASS)[0];
-const chartContainer = trendsContainer.getElementsByClassName(CHART_CLASS)[0];
 const legendContainer = trendsContainer.getElementsByClassName(LEGEND_CLASS)[0];
+const chartContainers = trendsContainer.getElementsByClassName(CHART_CLASS);
 
 const trendConfig = {
     legend: {
@@ -25,13 +25,12 @@ const trendConfig = {
     }
 };
 
-generateTimeseries(chartContainer, trendConfig).then(chart => {
-    window.addEventListener('resize', () => {
-        chart.resize({
-            height: chartContainer.offsetHeight,
-            width: chartContainer.offsetWidth
-        });
-    });
+const charts = [];
+
+window.onload = () => {
+    for (const chartContainer of chartContainers) {
+        loadChart(chartContainer);
+    }
 
     document
         .getElementsByClassName('cy-trends__legend-toggle')[0]
@@ -40,6 +39,21 @@ generateTimeseries(chartContainer, trendConfig).then(chart => {
                 ? legendContainer.classList.remove('collapsed')
                 : legendContainer.classList.add('collapsed');
 
-            chart.resize({ width: chartContainer.offsetWidth });
+            for (const chart of charts) {
+                chart.resize({ width: chartContainers[0].offsetWidth });
+            }
         });
-});
+};
+
+function loadChart(chartContainer) {
+    generateTimeseries(chartContainer, trendConfig).then(chart => {
+        charts.push(chart);
+
+        window.addEventListener('resize', () => {
+            chart.resize({
+                height: chartContainer.offsetHeight,
+                width: chartContainer.offsetWidth
+            });
+        });
+    });
+}

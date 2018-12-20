@@ -2,13 +2,13 @@ import { bb } from 'billboard.js';
 // import { generateColumns } from '../generators/timeseries.generator';
 
 // BASE
-const PADDING = 30;
+const PADDING = 80;
 
 const DEFAULT_OPTIONS = {
     padding: {
-        top: PADDING / 2,
-        right: PADDING,
-        bottom: PADDING / 2,
+        top: PADDING / 4,
+        right: PADDING / 4,
+        bottom: PADDING / 4,
         left: PADDING
     }
 };
@@ -91,7 +91,7 @@ export const generateTimeseries = (chartElement, config) => {
 };
 
 function convertToColumns(data) {
-    const NUM_POINTS_TO_SHOW = 288;
+    const NUM_POINTS_TO_SHOW = 1044;
     const [ metadata, timeseries ] = Object.values(data);
     const datetimes = Object.keys(timeseries);
     const timeseriesValues = Object.values(timeseries).splice(
